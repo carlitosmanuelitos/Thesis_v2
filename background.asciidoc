@@ -5,3 +5,132 @@
 == Background
 
 This project seeks to develop and evaluate a machine learning (ML) and deep learning (DL) pipeline specifically tailored for the forecasting of cryptocurrency prices. The choice of cryptocurrencies as the focus of this thesis is driven by their unique characteristics compared to traditional financial assets. Cryptocurrencies exhibit high volatility, dynamic market conditions, and a relatively unregulated environment. Unlike stocks, the influence on cryptocurrencies from global economic changes and unstructured news sources presents a different set of challenges and opportunities for predictive modeling. This thesis will explore the applicability of sophisticated ML/DL techniques used in traditional stock market forecasting to the more unpredictable cryptocurrency markets, aiming to enhance the accuracy and reliability of such predictions. The investigation addresses significant gaps in current research such as the limited data quality and availability, the youthful and volatile nature of the crypto market, and the impact of non-traditional factors like social media and technological changes.
+
+== Requirements
+
+=== Must Have
+* API-based data fetching system for robust and flexible handling of various cryptocurrencies.
+* Basic data preprocessing framework for cleaning and handling issues like missing values and outliers.
+* Core feature engineering module to implement fundamental features such as lag features and moving averages.
+* Development and implementation of at least one model from each major category (e.g., Linear Regression, LSTM).
+* Implementation of basic evaluation metrics such as MAE and RMSE for model performance assessment.
+* Basic visualization tools for plotting historical price data and forecasting results.
+
+=== Should Have
+* Advanced feature engineering capabilities, including rolling statistics and seasonal decomposition.
+* Comprehensive data analytics for additional insights like volatility measurements and historical performance metrics.
+* Enhanced variety of models and newer methodologies to broaden the forecasting capabilities.
+* Advanced interactive visualizations using tools like Plotly for dynamic data interaction.
+* Hyperparameter tuning system to refine and optimize model performance.
+
+=== Could Have
+* Integration of sentiment data from social media or news sources to enhance predictive features.
+* Automated system for model retraining and updating to maintain accuracy with new data.
+* Extended backtesting capabilities to validate model predictions across different market conditions.
+
+=== Won't Have
+* Direct integration with trading platforms for real-time trading based on forecasts.
+* Extensive parsing and incorporation of unstructured data such as detailed news articles beyond basic sentiment analysis.
+
+=== Technical Requirements
+* Programming languages: Python, due to its robust support in data science and machine learning.
+* Key libraries: Pandas, NumPy, Scikit-Learn, TensorFlow/Keras or PyTorch, and Plotly.
+* Data storage: Local storage in initial phases, scalable to cloud storage as needed.
+* APIs for data fetching: Preferably robust and well-documented APIs like Alpha Vantage or CoinAPI.
+* Version control: Git, to manage code versions and facilitate potential collaborative efforts.
+
+
+
+== Method
+
+=== System Architecture
+The machine learning and deep learning pipeline is designed with modularity and scalability in mind. The architecture is composed of several key modules:
+
+. Data Fetching Module: Responsible for API interactions to fetch and update data. It includes separate scripts for different data sources to ensure modularity.
+. Data Preprocessing Module: Includes a master script for initial cleaning and transformations, complemented by additional scripts tailored to specific model requirements.
+. Feature Engineering Module: A standalone module that generates features based on configurations specified in the model training scripts.
+. Modeling Module: Organized into separate directories for each category of models—traditional statistical models, machine learning models, deep learning models, and state-of-the-art models. Each directory contains specific scripts for each model type.
+. Evaluation Module: A centralized module to evaluate models using standardized metrics, facilitating comparison across different models.
+. Visualization and Reporting Module: Used for generating output visualizations, performance reports, and potentially interactive dashboards.
+
+=== Component Interaction
+The pipeline operates with a clear data and control flow:
+* Data Flow: Data moves from the fetching module through preprocessing and feature engineering, and finally into the respective modeling modules.
+* Control Flow: Managed by a master script or orchestrator, which sequences operations to ensure data is processed, features are engineered, models are trained, and evaluated systematically.
+
+=== Algorithms and Models
+The pipeline incorporates a diverse set of models to address different aspects of time series forecasting:
+
+. Traditional Statistical Models: AR, ARIMA, SARIMA, ARIMAX, SARIMAX.
+. Machine Learning Models: Linear Regression, XGBoost, LightGBM, SVM/SVRegressor, KNN, RandomForest, ExtraTrees.
+. Deep Learning Models: LSTM, Bi-directional LSTM, GRU, Bi-directional GRU, Simple RNN, Stacked RNN, Attention LSTM, CNN LSTM.
+. State-of-the-Art Models: TCN, NBeats, WaveNet, LSTNet, Transformer.
+
+Each model category is tailored to the unique challenges posed by the volatility and complexity of cryptocurrency data, with a focus on robustness, efficiency, and predictive accuracy.
+
+
+== Implementation
+
+The implementation of the cryptocurrency price forecasting pipeline will be executed in phases, each corresponding to a key component of the pipeline:
+
+. **Data Collection and Storage:**
+  - Implement the API fetching system using Python scripts.
+  - Set up local structured storage environments, categorizing data by cryptocurrency, granularity, and retrieval time span.
+  - Ensure data is timestamped upon extraction for traceability.
+
+. **Data Preprocessing and Feature Engineering:**
+  - Develop the master preprocessing script for handling common preprocessing tasks.
+  - Create separate preprocessing pipelines tailored to specific models.
+  - Implement the feature engineering module that allows configurable feature creation.
+
+. **Model Development and Evaluation:**
+  - Set up directories and scripts for each category of models: traditional, machine learning, deep learning, and state-of-the-art models.
+  - Implement a centralized evaluation module to apply standardized metrics across all models.
+
+. **Visualization and Reporting:**
+  - Develop interactive visualizations using Plotly for dynamic data interaction.
+  - Set up a reporting module to generate and store performance reports and insights.
+
+. **Deployment and Maintenance:**
+  - Prepare the environment for model deployment, potentially including cloud platforms if local resources are insufficient.
+  - Establish a system for ongoing maintenance, including periodic updates and model retraining.
+
+Each phase will involve rigorous testing and documentation to ensure system integrity and maintainability.
+
+== Milestones
+
+The implementation of the machine learning and deep learning pipeline will be tracked through the following key milestones:
+
+. **Milestone 1: Setup and Initial Testing**
+  - Completion of the data fetching and initial storage setup.
+  - Initial tests to validate API interactions and data storage mechanisms.
+  - Estimated completion: 1 month after project start.
+
+. **Milestone 2: Preprocessing and Feature Engineering Complete**
+  - Completion of all preprocessing scripts and the feature engineering module.
+  - Full dataset processed and ready for model input.
+  - Estimated completion: 2 months after project start.
+
+. **Milestone 3: Model Development and Initial Evaluation**
+  - All planned models are developed and have undergone initial testing.
+  - Initial evaluation results are documented.
+  - Estimated completion: 4 months after project start.
+
+. **Milestone 4: Comprehensive Evaluation and Optimization**
+  - Comprehensive testing across all models using the evaluation framework.
+  - Optimization of models based on initial results.
+  - Estimated completion: 6 months after project start.
+
+. **Milestone 5: Visualization, Reporting, and Deployment**
+  - Completion of the visualization and reporting modules.
+  - System ready for deployment.
+  - Deployment of the pipeline on the selected platform.
+  - Estimated completion: 8 months after project start.
+
+. **Milestone 6: Project Closure and Documentation**
+  - Final adjustments and refinements based on feedback.
+  - Comprehensive documentation completed.
+  - Final project report prepared.
+  - Estimated completion: 10 months after project start.
+
+These milestones will guide the development process and help ensure that the project remains on schedule.
