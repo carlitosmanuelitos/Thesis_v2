@@ -1,0 +1,7 @@
+= SPEC-001: Machine Learning and Deep Learning Pipeline for Cryptocurrency Price Forecasting
+:sectnums:
+:toc:
+
+== Background
+
+This project seeks to develop and evaluate a machine learning (ML) and deep learning (DL) pipeline specifically tailored for the forecasting of cryptocurrency prices. The choice of cryptocurrencies as the focus of this thesis is driven by their unique characteristics compared to traditional financial assets. Cryptocurrencies exhibit high volatility, dynamic market conditions, and a relatively unregulated environment. Unlike stocks, the influence on cryptocurrencies from global economic changes and unstructured news sources presents a different set of challenges and opportunities for predictive modeling. This thesis will explore the applicability of sophisticated ML/DL techniques used in traditional stock market forecasting to the more unpredictable cryptocurrency markets, aiming to enhance the accuracy and reliability of such predictions. The investigation addresses significant gaps in current research such as the limited data quality and availability, the youthful and volatile nature of the crypto market, and the impact of non-traditional factors like social media and technological changes.
