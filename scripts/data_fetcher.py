@@ -47,8 +47,9 @@ class CryptoDataFetcher:
     def save_data(self, df, ticker):
         """Save the fetched data to a CSV file."""
         date_str = datetime.now().strftime("%Y%m%d")
+        # Include the period and interval in the filename, but store files directly under the ticker-named folder
         filename = f"{ticker}_{self.period}_{self.interval}_{date_str}.csv"
-        directory = os.path.join('data', ticker.replace('-USD', ''), self.period, self.interval)
+        directory = os.path.join('data', ticker.replace('-USD', ''))
         os.makedirs(directory, exist_ok=True)
         file_path = os.path.join(directory, filename)
         df.to_csv(file_path, index=True)
