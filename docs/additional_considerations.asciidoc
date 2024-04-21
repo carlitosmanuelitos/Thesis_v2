@@ -1,0 +1,9 @@
+Additional Analytics Considerations
+Here are a few additional analyses you might consider:
+
+Drawdown: Calculate the maximum drawdown in the period, which can be a useful risk metric.
+Simple Moving Averages: Track moving averages to see how they compare to the actual price over time.
+Exponential Moving Averages: More weight to recent prices, useful for identifying trends.
+Trading Volume Analysis: Assessing how volume correlates with price changes can reveal trader behavior.
+Price Oscillators: Such as the stochastic oscillator to determine overbought or oversold conditions.
+Risk-Adjusted Returns: Sharpe ratio or Sortino ratio to measure how much return is being achieved for the taken risk.
