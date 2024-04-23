@@ -2,6 +2,7 @@ import os
 import logging
 import pandas as pd
 from datetime import datetime
+import openpyxl
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -25,12 +26,14 @@ class CryptoAnalytics:
         directory = os.path.join('data', ticker.replace('-USD', ''), frequency)
         filename = f"{ticker.replace('-USD', '')}_{period}_{interval}_{datetime.now().strftime('%Y%m%d')}.csv"
         file_path = os.path.join(directory, filename)
+        logging.info(f"Checking existence of data file: {file_path}")
         if os.path.exists(file_path):
+            logging.info(f"Attempting to load data from {file_path}")
             df = pd.read_csv(file_path, parse_dates=['Date'], index_col='Date')
             logging.info(f"Data loaded from {file_path}")
             return df
         else:
-            logging.warning(f"Data file not found: {file_path}")
+            logging.error(f"Failed to find data file at {file_path}, this will skip any further processing for this file.")
             return None
 
     def flatten_columns(self, resampled_df):
@@ -82,6 +85,7 @@ class CryptoAnalytics:
 
 
     def run_analytics(self):
+        logging.info("Starting the analytics process for all configured tickers and timeframes.")
         for ticker in self.config['tickers']:
             for period, interval in self.config['combinations']:
                 # Generate the expected file path
@@ -91,16 +95,22 @@ class CryptoAnalytics:
                 analytics_file_path = os.path.join(analytics_directory, analytics_filename)
 
                 # Check if analytics already exist
+                logging.info(f"Checking if analytics have already been performed for {ticker} at {analytics_file_path}")
                 if os.path.exists(analytics_file_path):
                     logging.info(f"Analytics already performed for {ticker}, {period}, {interval} and saved at {analytics_file_path}")
                     continue  # Skip to the next iteration if analytics already exist
 
+                # Load the data
                 df = self.load_data(ticker, period, interval)
                 if df is not None and not df.empty:
+                    logging.info(f"Starting analysis for {ticker} with data from {period} period and {interval} interval.")
                     weekly, monthly, yearly = self.calculate_analytics(df)
-                    self.save_analytics(weekly, monthly, yearly, ticker, period, interval)
+                    # Save the results
+                    saved_path = self.save_analytics(weekly, monthly, yearly, ticker, period, interval)
+                    logging.info(f"Analytics successfully saved to {saved_path}")
                 else:
-                    logging.info(f"No data available for analysis for {ticker}, {period}, {interval}")
+                    logging.warning(f"No data available for analysis for {ticker}, {period}, {interval}. Loaded data frame is empty.")
+
 
 
 # Configuration dictionary for analytics
